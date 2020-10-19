@@ -1,7 +1,11 @@
 <?php
+require_once('../../../../wp-load.php');
+if (!current_user_can('manage_options')) {
+    exit();
+}
 require_once("readCsv.php");
 
-function tebleGenerator($carName, $description)
+function cardGenerator($carName, $description, $description2)
 {
     $csvData =readCsv()['csv'];
     $header = readCsv()['header'];
@@ -20,10 +24,9 @@ function tebleGenerator($carName, $description)
             array_push($csv, $res);
         }
     }
-
+    $date=date("j/n/Y");
+    $carName=$csv[0][1].' '.$csv[0][5];
     if ($description != "") {
-        $date=date("j/n/Y");
-        $carName=$csv[0][1].' '.$csv[0][5];
         $resultado = str_replace("#date", $date, $description);
         $descriptionResult = str_replace("#carName", $carName, $resultado);
     } else {
@@ -76,7 +79,11 @@ function tebleGenerator($carName, $description)
         </div>
       </div>';
     }
-    $content .="</div> </figure>";
+    if ($description2 != "") {
+        $description2 = str_replace("#date", $date, $description2);
+        $description2 = str_replace("#carName", $carName, $description2);
+    }
+    $content .='</div><div class="mb-4">'.$description2.' </div> </figure>'    ;
     return $content;
 }
 

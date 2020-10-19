@@ -1,8 +1,11 @@
 <?php
 require_once('../../../../wp-load.php');
+if (!current_user_can('manage_options')) {
+    exit();
+}
 require_once('generateCards.php');
 
-function updatePost($mark, $class, $code, $ref1, $wpdb, $description)
+function updatePost($mark, $class, $code, $ref1, $wpdb, $description, $description2)
 {
     $ref1=validateName($ref1);
     $content="";
@@ -13,12 +16,12 @@ function updatePost($mark, $class, $code, $ref1, $wpdb, $description)
             $content.= $principal[0];
             $oldTable= explode('</figure>', $principal[1])[0];
             $second= explode($oldTable, $principal[1]);
-            $content.= tebleGenerator($ref1, $description);
+            $content.= cardGenerator($ref1, $description, $description2);
             $content.=$second[1];
             break;
         
         default:
-            $content =  $post->post_content.tebleGenerator($ref1, $description);
+            $content =  $post->post_content.cardGenerator($ref1, $description, $description2);
             break;
     }
     $my_post = array();
