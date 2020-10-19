@@ -79,6 +79,10 @@ function cardGenerator($carName, $description, $description2)
         </div>
       </div>';
     }
+    if ($description2 != "") {
+        $description2 = str_replace("#date", $date, $description2);
+        $description2 = str_replace("#carName", $carName, $description2);
+    }
     $content .='</div><div class="mb-4">'.$description2.' </div> </figure>'    ;
     return $content;
 }
