@@ -1,8 +1,11 @@
 <?php
 require_once('../../../../wp-load.php');
+if (!current_user_can('manage_options')) {
+    exit();
+}
 require_once('generateCards.php');
 
-function insertPost($mark, $class, $code, $ref1, $wpdb, $description)
+function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $description2)
 {
     $ref1=validateName($ref1);
     $postid = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title ='" . $mark.'-'.$ref1 . "'");
@@ -11,7 +14,7 @@ function insertPost($mark, $class, $code, $ref1, $wpdb, $description)
         $author_id = 1;
         $slug = $mark.'-'.$ref1;
         $title = $mark.'-'.$ref1;
-        $content =tebleGenerator($ref1, $description);
+        $content =cardGenerator($ref1, $description, $description2);
         $post_id = wp_insert_post(
             array(
                 'comment_status'	=>	'closed',

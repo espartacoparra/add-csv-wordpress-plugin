@@ -25,12 +25,21 @@
         </tr>
         <tr class="form-field form-required">
           <th scope="row"><label for="description">Descripción por defecto </label></th>
-          <td><textarea name="description" style="color:black" id="description"  disabled cols="30" rows="3"><?php echo "<p><strong>Lista de precios actualizada #date </strong> para los todos los vehículos <strong> #carName </strong> en sus diferentes versiones, revise detalladamente cual es su versión correcta para que obtenga el valor comercial correcto para su vehículo y compartalo con quien desee desde el botón que se encuentra en la parte inferior.</p>"?></textarea></td>
+          <td><textarea  style="color:black" id="description"  disabled cols="30" rows="3"><?php echo "<p><strong>Lista de precios actualizada #date </strong> para los todos los vehículos <strong> #carName </strong> en sus diferentes versiones, revise detalladamente cual es su versión correcta para que obtenga el valor comercial correcto para su vehículo y compartalo con quien desee desde el botón que se encuentra en la parte inferior.</p>"?></textarea></td>
         </tr> 
         <tr class="form-field form-required">
           <th scope="row"><label for="description">Descripción para los post <span
                 class="description">(Opcional)</span></label></th>
           <td><textarea name="description" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+        <tr class="form-field form-required">
+          <th scope="row"><label for="description2">Descripción Inferior</label></th>
+          <td><p>Si la descripción se deja vaciá no se insertara nada en la parte inferior del post</p></td>
+        </tr> 
+        <tr class="form-field form-required">
+          <th scope="row"><label for="description2">Descripción Inferior para los post <span
+                class="description2">(Opcional)</span></label></th>
+          <td><textarea name="description2" id="" cols="30" rows="10"></textarea></td>
         </tr>
       </tbody>
     </table>
