@@ -1,7 +1,6 @@
 <?php
 require_once("readCsv.php");
 
-
 function tebleGenerator($carName, $description)
 {
     $csvData =readCsv()['csv'];
@@ -21,32 +20,6 @@ function tebleGenerator($carName, $description)
             array_push($csv, $res);
         }
     }
-
-    /*$table='<figure class="wp-block-table php"> <div class="table-responsive"><table class="table table-hover">';
-    $tableheader="<thead><tr>";
-
-    for ($i=0; $i < count($header) ; $i++) {
-        if ($i!=0 && $i!=4 && ($i<11 || $i > 40)) {
-            $tableheader=$tableheader."<td>".$header[$i]."</td>";
-        }
-    }
-    $tableheader=$tableheader."</tr></thead>";
-    $tablebody="<tbody>";
-    foreach ($csv as $car) {
-        $tableRow="<tr>";
-        for ($i=0; $i <count($car) ; $i++) {
-            if ($i!=0 && $i!=4 && ($i<11 || $i > 40)) {
-                if ($header[$i] >=2000 && $car[$i]!=0) {
-                    $var =number_format(((int)$car[$i])*1000);
-                    $car[$i]="$".str_replace(',', '.', $var);
-                }
-                $tableRow=$tableRow."<td>".$car[$i]."</td>";
-            }
-        }
-        $tablebody=$tablebody."".$tableRow."</tr>";
-    }
-    $tablebody=$tablebody."</tbody>";
-    return $table= $table."".$tableheader."".$tablebody.'</table></div></figure>';*/
 
     if ($description != "") {
         $date=date("j/n/Y");
@@ -102,16 +75,6 @@ function tebleGenerator($carName, $description)
           </div>
         </div>
       </div>';
-        /* for ($i=0; $i <count($car) ; $i++) {
-             if ($i!=0 && $i!=4 && ($i<11 || $i > 40)) {
-                 if ($header[$i] >=2000 && $car[$i]!=0) {
-                     $var =number_format(((int)$car[$i])*1000);
-                     $car[$i]="$".str_replace(',', '.', $var);
-                 }
-                 $tableRow=$tableRow."<td>".$car[$i]."</td>";
-             }
-         }
-         $tablebody=$tablebody."".$tableRow."</tr>";*/
     }
     $content .="</div> </figure>";
     return $content;

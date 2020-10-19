@@ -25,25 +25,4 @@ add_action("admin_menu", "crearMenu");
 function crearMenu()
 {
     add_menu_page('AddCsv', 'AddCsv', 'manage_options', plugin_dir_path(__FILE__).'pagecsv.php', null, '', '5');
-    // add_submenu_page('add-csv-menu', 'Cargar csv', 'Cargar csv', 'manage_options', 'add-csv-menu-cargar-csv', 'cargarCsvContent');
 }
-
-// function addBootstrapAddCsv()
-// {
-//     wp_register_style(
-//         'bootstrapAddCsv', // nombre
-//         'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css', // URL
-//     );
-//     wp_enqueue_style("bootstrapAddCsv");
-// }
-
-// function loadBootstrapAddCsv($hook)
-// {
-//     echo $hook;
-//     wp_register_style(
-//         'bootstrapAddCsv', // nombre
-//                 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css', // URL
-//     );
-//     wp_enqueue_style("bootstrapAddCsv");
-// }
-// add_action('admin_enqueue_scripts', 'loadBootstrapAddCsv');

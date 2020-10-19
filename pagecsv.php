@@ -39,8 +39,4 @@
       <input type="submit" name="createuser" id="createusersub" class="button button-primary" value="Subir CSV" />
     </p>
   </form>
-
-
-
-
 </div>

@@ -1,5 +1,4 @@
 <?php
-
     require_once("readCsv.php");
     require_once("generatePost.php");
     $csv =readCsv()['csv'];

@@ -1,13 +1,6 @@
 <?php
 require_once('../../../../wp-load.php');
 require_once('generateCards.php');
-//require('somefile.php');
-/**
- * @snippet       WordPress Snippet: Crear post con código
- * @author        Oscar Abad Folgueira
- * @author_url    https://www.oscarabadfolgueira.com
- * @snippet_url   https://www.oscarabadfolgueira.com/crear-post-wordpress-codigo/
- */
 
 function updatePost($mark, $class, $code, $ref1, $wpdb, $description)
 {

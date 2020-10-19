@@ -2,7 +2,6 @@
 require_once("readCsv.php");
 require_once("updatePost.php");
 $csv =readCsv()['csv'];
-
 $validator=[];
 
 foreach ($csv as $car) {
