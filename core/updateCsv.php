@@ -19,5 +19,6 @@ foreach ($csv as $car) {
     }
 }
 $wpdb->query($wpdb->prepare("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'"));
-$location = $_SERVER['HTTP_REFERER'];
-    wp_safe_redirect($location);
+$message="Csv actualizado";
+$location = $_SERVER['HTTP_REFERER'].'&message='.$message;
+ wp_safe_redirect($location);

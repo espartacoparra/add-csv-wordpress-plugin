@@ -34,14 +34,7 @@ function cardGenerator($carName, $description, $description2)
     }
     $content = ' 
     <figure class="wp-block-table php">
-    <form class="form-inline" method="get" class="search-form" action="http://localhost/credivehiculos/">
-    <input type="hidden" name="id" value="1853" />
-    <div class="form-group">
-    <input type="text" name="s" class="form-control mb-2" id="Search" placeholder="Buscar">
-    <button type="submit" class="btn btn-primary mb-2">Buscar</button>
-    </div>
-  
-    </form>
+    [ivory-search id="1853" title="Default Search Form"]
      <div class="container">
      <div class="mb-4">'.$descriptionResult.' </div>
      <div class="row">';

@@ -7,7 +7,13 @@
   <a href="<?php echo site_url().'/wp-content/plugins/add-csv-wordpress-plugin/core/updateCsv.php'?>"
     class="page-title-action">Actualizar la data del CSV</a>
   <br><br><br>
-
+<?php
+if ($_GET['message']) {
+      ?>
+  <div id="message" class="notice notice-success is-dismissible"><p><?php echo $_GET['message']?>.</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Descartar este aviso.</span></button></div>
+<?php
+  }
+?>
   <form name="uploadCsv" id="uploadCsv" class="validate"  enctype="multipart/form-data"
     method="POST" action="<?php echo site_url().'/wp-content/plugins/add-csv-wordpress-plugin/core/loadfile.php'?>">
     <table class="form-table" role="presentation">

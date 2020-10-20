@@ -10,5 +10,6 @@ foreach ($csv as $car) {
     insertPost($car[1], $car[2], $car[3], $car[5], $wpdb, "", "");
 }
 $wpdb->query($wpdb->prepare("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'"));
-$location = $_SERVER['HTTP_REFERER'];
-wp_safe_redirect($location);
+$message="Csv cargado";
+$location = $_SERVER['HTTP_REFERER'].'&message='.$message;
+ wp_safe_redirect($location);
