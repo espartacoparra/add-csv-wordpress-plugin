@@ -10,6 +10,8 @@ if (!current_user_can('manage_options')) {
     $wpdb=$wpdb;
     function loadCsv($description, $description2)
     {
+        require_once("readCsv.php");
+        require_once("generatePost.php");
         global $wpdb;
         $csv =readCsv()['csv'];
         foreach ($csv as $car) {
@@ -22,6 +24,8 @@ if (!current_user_can('manage_options')) {
 
     function updateCsv($description, $description2)
     {
+        require_once("readCsv.php");
+        require_once("updatePost.php");
         global $wpdb;
         $validator=[];
         $csv =readCsv()['csv'];
