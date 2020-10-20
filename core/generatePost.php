@@ -15,8 +15,8 @@ function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
         $slug = $mark.'-'.$ref1;
         $title = $mark.' '.$ref1;
         $content =cardGenerator($ref1, $description, $description2);
-        $post_id = wp_insert_post(
-            array(
+        //$post_id = wp_insert_post(
+        return  array(
                 'comment_status'	=>	'closed',
                 'ping_status'		=>	'closed',
                 'post_author'		=>	$author_id,
@@ -26,9 +26,9 @@ function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
                 'post_status'		=>	'publish',
                 'post_type'		    =>	'post',
                 'post_category'		    =>array(2545)
-            )
-        );
-        update_post_meta($post_id, '_yoast_wpseo_focuskw', $mark.'-'.$ref1);
-        update_post_meta($post_id, '_yoast_wpseo_metadesc', $mark.'-'.$ref1.'s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown print');
+            );
+        // );
+        //update_post_meta($post_id, '_yoast_wpseo_focuskw', $mark.'-'.$ref1);
+        //update_post_meta($post_id, '_yoast_wpseo_metadesc', $mark.'-'.$ref1.'s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown print');
     }
 }
