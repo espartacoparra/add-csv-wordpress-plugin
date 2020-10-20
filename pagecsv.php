@@ -2,10 +2,7 @@
   <?php
   echo '<h1 class="wp-heading-inline">'.get_admin_page_title().'</h1>';
   ?>
-  <a href="<?php echo site_url().'/wp-content/plugins/add-csv-wordpress-plugin/core/csv.php'?>" class="page-title-action">Cargar la data
-    del CSV</a>
-  <a href="<?php echo site_url().'/wp-content/plugins/add-csv-wordpress-plugin/core/updateCsv.php'?>"
-    class="page-title-action">Actualizar la data del CSV</a>
+
   <br><br><br>
 <?php
 if ($_GET['message']) {

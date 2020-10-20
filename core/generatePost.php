@@ -8,12 +8,12 @@ require_once('generateCards.php');
 function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $description2)
 {
     $ref1=validateName($ref1);
-    $postid = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title ='" . $mark.'-'.$ref1 . "'");
+    $postid = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title ='" . $mark.' '.$ref1 . "'");
     if ($postid == "") {
         $post_id = -1;
         $author_id = 1;
         $slug = $mark.'-'.$ref1;
-        $title = $mark.'-'.$ref1;
+        $title = $mark.' '.$ref1;
         $content =cardGenerator($ref1, $description, $description2);
         $post_id = wp_insert_post(
             array(
