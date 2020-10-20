@@ -3,10 +3,6 @@ require_once('../../../../wp-load.php');
 if (!current_user_can('manage_options')) {
     exit();
 }
-     require_once("readCsv.php");
-     require_once("generatePost.php");
-     require_once("updatePost.php");
-     
     $wpdb=$wpdb;
     function loadCsv($description, $description2)
     {
