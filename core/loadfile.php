@@ -19,5 +19,5 @@ print_r($_FILES);
 print "</pre>";
 loadCsv($_POST['description'], $_POST['description2']);
 $message="Csv cargado y actualizado";
-$location = $_SERVER['HTTP_REFERER'].'&message='.$message;
- wp_safe_redirect($location);
+// $location = $_SERVER['HTTP_REFERER'].'&message='.$message;
+//  wp_safe_redirect($location);
