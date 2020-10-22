@@ -4,6 +4,7 @@ if (!current_user_can('manage_options')) {
     exit();
 }
 require_once("readCsv.php");
+require_once("helpers.php");
 
 function cardGenerator($carName, $description, $description2)
 {
@@ -32,12 +33,12 @@ function cardGenerator($carName, $description, $description2)
     } else {
         $descriptionResult='<p><strong>Lista de precios actualizada '.$date.'</strong> para los todos los vehículos <strong>'.$carName.'</strong> en sus diferentes versiones, revise detalladamente cual es su versión correcta para que obtenga el valor comercial correcto para su vehículo y compartalo con quien desee desde el botón que se encuentra en la parte inferior.</p>';
     }
-    $content = ' 
-    <figure class="wp-block-table php">
-    [ivory-search id="1853" title="Default Search Form"]
-     <div class="container">
-     <div class="mb-4">'.$descriptionResult.' </div>
-     <div class="row">';
+    $content = "
+    <figure class='wp-block-table php'>
+    [ivory-search id='1853' title='Default Search Form']
+     <div class='container'>
+     <div class='mb-4'>".$descriptionResult."</div>
+     <div class='row'>";
     foreach ($csv as $car) {
         $data = "";
         for ($i=0; $i <count($car) ; $i++) {
@@ -61,30 +62,21 @@ function cardGenerator($carName, $description, $description2)
             }
         }
         $transmisionIndex=count($header)-3;
-        $content .='<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-lg-4 mb-2">
-        <div class="thumbnail">
-          <div class="caption">
-            <h5 >'.$car[1]." ".$car[5]." ".$car[7]." ".$car[$transmisionIndex].'</h5>
+        $content .="<div class='col-12 col-sm-6 col-md-4 col-lg-4 col-lg-4 mb-2'>
+        <div class='thumbnail'>
+          <div class='caption'>
+            <h5 >".$car[1]." ".$car[5]." ".$car[7]."".$car[$transmisionIndex]."</h5>
             <p >
-             '.$data.'
+             ".$data."
             </p>
           </div>
         </div>
-      </div>';
+      </div>";
     }
     if ($description2 != "") {
         $description2 = str_replace("#date", $date, $description2);
         $description2 = str_replace("#carName", $carName, $description2);
     }
-    $content .='</div><div class="mb-4">'.$description2.' </div> </figure>'    ;
+    $content .="</div><div class='mb-4'>".$description2.' </div> </figure>'    ;
     return $content;
-}
-
-function validateName($name)
-{
-    if (strpbrk($name, "[")) {
-        return explode("[", $name)[0];
-    } else {
-        return $name;
-    }
 }
