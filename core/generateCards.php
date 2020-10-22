@@ -34,7 +34,7 @@ function cardGenerator($carName, $description, $description2)
     }
     $content = ' 
     <figure class="wp-block-table php">
-    [ivory-search id="1853" title="Default Search Form"]
+    [ivory-search id="1852" title="Default Search Form"]
      <div class="container">
      <div class="mb-4">'.$descriptionResult.' </div>
      <div class="row">';
@@ -61,7 +61,7 @@ function cardGenerator($carName, $description, $description2)
             }
         }
         $transmisionIndex=count($header)-3;
-        $content .='<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-lg-4 mb-2">
+        $content .='<div class="col-12 col-sm-6 col-md-6 col-lg-6 col-lg-6  col-xl-6 ">
         <div class="thumbnail">
           <div class="caption">
             <h5 >'.$car[1]." ".$car[5]." ".$car[7]." ".$car[$transmisionIndex].'</h5>
