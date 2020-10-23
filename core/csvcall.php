@@ -16,7 +16,6 @@ require_once("functionhelper.php");
         $originalcsv=readCsv()['csv'];
         $csv =reduceCsv($originalcsv);
         $clasifiedcsv=indexedCsv($originalcsv);
-        ($clasifiedcsv);
         foreach ($csv as $car) {
             insertPost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2, $clasifiedcsv);
         }
@@ -27,7 +26,7 @@ require_once("functionhelper.php");
         $tiempo_final = microtime(true);
         $tiempo = $tiempo_final - $tiempo_inicial;
     
-        echo "El tiempo de ejecución del archivo ha sido de " . $tiempo/60 . " Minutos";
+        echo "El tiempo de ejecución del archivo ha sido de " . $tiempo . " Segundos";
         //updateCsv($description, $description2);
     }
 
