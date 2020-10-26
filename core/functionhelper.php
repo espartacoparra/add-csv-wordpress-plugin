@@ -15,9 +15,9 @@ function reduceCsv($csv)
     foreach ($csv as $key => $cars) {
         $queryarray= $cars[1].' '.validateName($cars[5]);
         if (!$arrayhelper[$queryarray]) {
-            $tempcar=array("".$queryarray."" =>$cars);
+            $tempcar=array($queryarray =>$cars);
             $newcsv= array_merge($newcsv, $tempcar);
-            $temp=array("".$queryarray."" =>$queryarray);
+            $temp=array($queryarray =>$queryarray);
             $arrayhelper= array_merge($arrayhelper, $temp);
         }
     }
@@ -27,16 +27,17 @@ function indexedCsv($csv)
 {
     $arrayhelper=[];
     $newcsv=[];
-    for ($i=0; $i <= count($csv) ; $i++) {
-        $queryarray= $csv[$i][1].' '.validateName($csv[$i][5]);
+    foreach ($csv as  $value) {
+        $queryarray= $value[1].' '.validateName($value[5]);
         if (!$arrayhelper[$queryarray]) {
-            $temp=array("".$queryarray."" =>$csv[$i]);
+            $temp=array($queryarray =>$queryarray);
             $arrayhelper= array_merge($arrayhelper, $temp);
+            $tempcar=array($queryarray =>array( $value));
+            $newcsv= array_merge($newcsv, $tempcar);
         } else {
-            $arrayhelper= array_merge($arrayhelper, $csv[$i]);
+            $tempcar=array($value);
+            $newcsv[$queryarray]= array_merge($newcsv[$queryarray], $tempcar);
         }
     }
-
-    // print_r($arrayhelper);
-    return $arrayhelper;
+    return $newcsv;
 }

@@ -7,45 +7,29 @@ if (!current_user_can('manage_options')) {
 require_once("functionhelper.php");
 
     $wpdb=$wpdb;
-    function loadCsv($description, $description2)
+    function loadCsv($description, $description2, $ivory, $category)
     {
-        $tiempo_inicial = microtime(true);
         require_once("readCsv.php");
         require_once("generatePost.php");
         global $wpdb;
-        $originalcsv=readCsv()['csv'];
-        $csv =reduceCsv($originalcsv);
-        $clasifiedcsv=indexedCsv($originalcsv);
+        $originalcsv=readCsv();
+        $csvheader =$originalcsv['header'];
+        $csv =reduceCsv($originalcsv['csv']);
+        $clasifiedcsv=indexedCsv($originalcsv['csv']);
         foreach ($csv as $car) {
-            insertPost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2, $clasifiedcsv);
+            insertPost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2, $clasifiedcsv, $csvheader, $ivory, $category);
         }
         $wpdb->query($wpdb->prepare("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'"));
-        //echo 'load <br>';
-        // print_r($csv);
-        // echo 'load <br>';
-        $tiempo_final = microtime(true);
-        $tiempo = $tiempo_final - $tiempo_inicial;
-    
-        echo "El tiempo de ejecución del archivo ha sido de " . $tiempo . " Segundos";
-        //updateCsv($description, $description2);
+        updateCsv($description, $description2, $csv, $clasifiedcsv, $csvheader, $ivory);
     }
 
-    function updateCsv($description, $description2)
+    function updateCsv($description, $description2, $csv, $clasifiedcsv, $csvheader, $ivory)
     {
-        require_once("readCsv.php");
         require_once("updatePost.php");
         global $wpdb;
-        $validator=[];
-        $csv =readCsv()['csv'];
+        $csv =$csv;
         foreach ($csv as $car) {
-            if (count($validator)==0) {
-                $validator[(string)($car[1].'-'.$car[5])]=$car[1].'-'.$car[5];
-                updatePost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2);
-            }
-            if (!$validator[(string)($car[1].'-'.$car[5])]) {
-                $validator[(string)($car[1].'-'.$car[5])]=$car[1].'-'.$car[5];
-                updatePost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2);
-            }
+            updatePost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2, $clasifiedcsv, $csvheader, $ivory);
         }
         $wpdb->query($wpdb->prepare("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'"));
         echo 'update';

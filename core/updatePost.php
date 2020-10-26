@@ -5,7 +5,7 @@ if (!current_user_can('manage_options')) {
 }
 require_once('generateCards.php');
 
-function updatePost($mark, $class, $code, $ref1, $wpdb, $description, $description2)
+function updatePost($mark, $class, $code, $ref1, $wpdb, $description, $description2, $csv, $csvheader, $ivory)
 {
     $ref1=validateName($ref1);
     $content="";
@@ -16,12 +16,12 @@ function updatePost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
             $content.= $principal[0];
             $oldTable= explode('</figure>', $principal[1])[0];
             $second= explode($oldTable, $principal[1]);
-            $content.= cardGenerator($ref1, $description, $description2);
+            $content.= cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory);
             $content.=$second[1];
             break;
         
         default:
-            $content =  $post->post_content.cardGenerator($ref1, $description, $description2);
+            $content =  $post->post_content.cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory);
             break;
     }
     $my_post = array();
