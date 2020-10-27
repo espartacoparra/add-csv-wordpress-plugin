@@ -14,8 +14,13 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
     }
     $content = ' 
     <figure class="wp-block-table php">
-    [ivory-search id="'.$ivory.'" title="Default Search Form"]
+    <div style="color: rgb(65, 64, 64);">
+    <h3 class="text-center" style="color: rgb(128, 128, 128);">'.$csvlist[$carName][0][1]." ".validateName($csvlist[$carName][0][5]).'</h3>
+    
      <div class="container">
+     <div class="ml-1">
+     [ivory-search id="'.$ivory.'" title="Default Search Form"]
+     </div>
      <div class="mb-4">'.$descriptionResult.' </div>';
     $count=1;
     foreach ($csvlist[$carName] as $car) {
@@ -38,7 +43,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
                         $car[$i]="$".str_replace(',', '.', $var);
                         $data.='Año '.$header[$i]." : ".$car[$i]."<br>";
                     }
-                } elseif ($header[$i]!="Bcpp" && $header[$i]!="Ejes"  && $header[$i]!="Estado" && $header[$i]!="Um" && $header[$i]!="PesoCategoria" && $header[$i]!="Marca" && $header[$i]!="CapacidadCarga" && $header[$i]!="Peso" && $header[$i]!="IdServicio" && $header[$i]!="Importado" && $header[$i]!="Potencia" && $header[$i]!="TipoCaja" && $header[$i]!="Nacionalidad" && $header[$i]!="Cilindraje" && $header[$i]!="Referencia1" && $header[$i]!="Referencia2" && $header[$i]!="Referencia3" && $header[$i]!="Um" &&$header[$i]!="PesoCategoria") {
+                } elseif ($header[$i]!="" && $header[$i]!="Bcpp" && $header[$i]!="Ejes"  && $header[$i]!="Estado" && $header[$i]!="Um" && $header[$i]!="PesoCategoria" && $header[$i]!="Marca" && $header[$i]!="CapacidadCarga" && $header[$i]!="Peso" && $header[$i]!="IdServicio" && $header[$i]!="Importado" && $header[$i]!="Potencia" && $header[$i]!="TipoCaja" && $header[$i]!="Nacionalidad" && $header[$i]!="Cilindraje" && $header[$i]!="Referencia1" && $header[$i]!="Referencia2" && $header[$i]!="Referencia3" && $header[$i]!="Um" && $header[$i]!="PesoCategoria") {
                     $data.=$header[$i]." : ".$car[$i]."<br>";
                 }
             }
@@ -47,7 +52,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         $content .='<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
             <div class="thumbnail">
             <div class="caption">
-                <h5 >'.$car[1]." ".$car[5]." ".$car[7]." ".$car[$transmisionIndex].'</h5>
+                <h5 >'.$car[1]." ".validateName($car[5])." ".$car[7]." ".$car[$transmisionIndex].'</h5>
                 <p >
                 '.$data.'
                 </p>
@@ -61,14 +66,11 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
             $count++;
         }
     }
-    if ($count == 1 || $count == 2) {
-        $content.= '</div>';
-    }
-
+    $content.= '</div>';
     if ($description2 != "") {
         $description2 = str_replace("#date", $date, $description2);
         $description2 = str_replace("#carName", $carName, $description2);
     }
-    $content .='<div class="mb-4">'.$description2.' </div> </figure>'    ;
+    $content .='<div class="mb-4">'.$description2.'<div> </div> </figure>'    ;
     return $content;
 }
