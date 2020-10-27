@@ -7,7 +7,6 @@ function validateName($name)
         return $name;
     }
 }
-
 function reduceCsv($csv)
 {
     $arrayhelper=[];

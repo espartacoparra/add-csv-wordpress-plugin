@@ -19,7 +19,6 @@ function updatePost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
             $content.= cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory);
             $content.=$second[1];
             break;
-        
         default:
             $content =  $post->post_content.cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory);
             break;

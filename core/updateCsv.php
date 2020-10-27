@@ -7,7 +7,6 @@ require_once("readCsv.php");
 require_once("updatePost.php");
 $csv =readCsv()['csv'];
 $validator=[];
-
 foreach ($csv as $car) {
     if (count($validator)==0) {
         $validator[(string)($car[1].'-'.$car[5])]=$car[1].'-'.$car[5];

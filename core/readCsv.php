@@ -10,7 +10,6 @@ function readCsv()
     $header = [];
     $user = [];
     require_once('generatePost.php');
-
     while (($result = fgetcsv($file, 1000, ",")) !== false) {
         if (count($header) == 0) {
             foreach ($result as  $value) {
