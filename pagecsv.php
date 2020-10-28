@@ -17,7 +17,7 @@
     }
   ?>
     <form name="uploadCsv" id="uploadCsv" class="validate" enctype="multipart/form-data" method="POST"
-        action="<?php echo site_url().'/wp-content/plugins/add-csv-wordpress-plugin/core/loadfile.php'?>">
+        action="<?php echo site_url().'/wp-content/plugins/add-csv-wordpress-plugin-main/core/loadfile.php'?>">
         <table class="form-table" role="presentation">
             <tbody>
                 <tr class="form-field form-required">
