@@ -7,7 +7,7 @@
     <?php
   require_once('../wp-load.php');
   $cat=get_categories();
-    if ($_GET['message']) {
+    if (isset($_GET['message'])) {
         ?>
     <div id="message" class="notice notice-success is-dismissible">
         <p><?php echo $_GET['message']?>.</p><button type="button" class="notice-dismiss"><span

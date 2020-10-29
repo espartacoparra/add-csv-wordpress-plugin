@@ -28,7 +28,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         if ($count == 1) {
             $content.= '<div class="row">';
         }
-        for ($i=0; $i <= count($car); $i++) {
+        for ($i=0; $i < count($car); $i++) {
             if ($i!=0 && $i!=4 && ($i<11 || $i > 40)) {
                 if ($header[$i] == "Peso" && $car[$i] > 0) {
                     $data.=$header[$i]." : ".$car[$i]." Kg <br>";
