@@ -5,7 +5,7 @@ if (!current_user_can('manage_options')) {
 }
 require_once('generateCards.php');
 
-function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $description2, $csv, $csvheader, $ivory, $category)
+function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $description2, $csv, $csvheader, $ivory)
 {
     $ref1 = validateName($ref1);
     $postid = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title ='" . $mark . ' ' . $ref1 . "' AND post_type = 'page'");
@@ -25,7 +25,7 @@ function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
                 'post_content'      =>  $content,
                 'post_status'        =>    'publish',
                 'post_type'            =>    'page',
-                'post_category'            => array($category)
+                //'post_category'            => array($category)
             )
         );
         update_post_meta($post_id, '_yoast_wpseo_focuskw', $mark . '-' . $ref1);

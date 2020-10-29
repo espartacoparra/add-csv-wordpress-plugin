@@ -43,7 +43,7 @@
                         <input name="ivory" type="text" id="csv" value="" placeholder="1853" required />
                     </td>
                 </tr>
-                <tr class="form-field form-required">
+                <!-- <tr class="form-field form-required">
                     <th scope="row">
                         <label for="category">Categoria de las Entradas
                             <span class="description">(obligatorio)</span></label>
@@ -55,7 +55,7 @@
   }?>
                         </select>
                     </td>
-                </tr>
+                </tr> -->
                 <tr class="form-field form-required">
                     <th scope="row"><label for="description">Descripción por defecto </label></th>
                     <td><textarea style="color:black" id="description" disabled cols="30"
