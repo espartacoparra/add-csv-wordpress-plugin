@@ -8,7 +8,7 @@ require_once('generateCards.php');
 function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $description2, $csv, $csvheader, $ivory, $category)
 {
     $ref1 = validateName($ref1);
-    $postid = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title ='" . $mark . ' ' . $ref1 . "'");
+    $postid = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title ='" . $mark . ' ' . $ref1 . "' AND post_type = 'page'");
     if ($postid == "") {
         $post_id = -1;
         $author_id = 1;

@@ -9,7 +9,7 @@ function updatePost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
 {
     $ref1=validateName($ref1);
     $content="";
-    $post = $wpdb->get_row("SELECT `ID` , `post_content` FROM $wpdb->posts WHERE post_title ='" . $mark.' '.$ref1 . "'", OBJECT);
+    $post = $wpdb->get_row("SELECT `ID` , `post_content` FROM $wpdb->posts WHERE post_title ='" . $mark.' '.$ref1 . "' AND post_type = 'page'", OBJECT);
     $principal= explode('<figure class="wp-block-table php">', $post->post_content);
     switch (count($principal)) {
         case '2':
