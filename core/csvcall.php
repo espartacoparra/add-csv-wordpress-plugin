@@ -19,7 +19,7 @@ require_once("functionhelper.php");
         foreach ($csv as $car) {
             insertPost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2, $clasifiedcsv, $csvheader, $ivory, $category);
         }
-        $wpdb->query($wpdb->prepare("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'"));
+        $wpdb->query("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'");
         updateCsv($description, $description2, $csv, $clasifiedcsv, $csvheader, $ivory);
     }
 
@@ -31,6 +31,5 @@ require_once("functionhelper.php");
         foreach ($csv as $car) {
             updatePost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2, $clasifiedcsv, $csvheader, $ivory);
         }
-        $wpdb->query($wpdb->prepare("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'"));
-        echo 'update';
+        $wpdb->query("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'");
     }
