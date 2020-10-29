@@ -24,7 +24,7 @@ function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
                 'post_title'        =>    $title,
                 'post_content'      =>  $content,
                 'post_status'        =>    'publish',
-                'post_type'            =>    'post',
+                'post_type'            =>    'page',
                 'post_category'            => array($category)
             )
         );
