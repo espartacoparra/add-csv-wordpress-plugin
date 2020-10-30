@@ -7,7 +7,7 @@ if (!current_user_can('manage_options')) {
 require_once("functionhelper.php");
 
     $wpdb=$wpdb;
-    function loadCsv($description, $description2, $ivory)
+    function loadCsv($description, $description2, $ivory, $category)
     {
         require_once("readCsv.php");
         require_once("generatePost.php");
@@ -17,7 +17,7 @@ require_once("functionhelper.php");
         $csv =reduceCsv($originalcsv['csv']);
         $clasifiedcsv=indexedCsv($originalcsv['csv']);
         foreach ($csv as $car) {
-            insertPost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2, $clasifiedcsv, $csvheader, $ivory);
+            insertPost($car[1], $car[2], $car[3], $car[5], $wpdb, $description, $description2, $clasifiedcsv, $csvheader, $ivory, $category);
         }
         $wpdb->query("DELETE FROM `wp_posts` WHERE post_parent > 0 AND post_type = 'revision'");
         updateCsv($description, $description2, $csv, $clasifiedcsv, $csvheader, $ivory);

@@ -7,7 +7,7 @@ require_once('csvcall.php');
 $uploaddir = plugin_dir_path(__FILE__);
 $uploadfile = $uploaddir . 'super.csv';
 if (move_uploaded_file($_FILES['csv']['tmp_name'], $uploadfile)) {
-    loadCsv($_POST['description'], $_POST['description2'], $_POST['ivory']);
+    loadCsv($_POST['description'], $_POST['description2'], $_POST['ivory'], $_POST['category']);
     $message = "Csv cargado y actualizado";
 } else {
     $message = "Ocurrió un error al cargar el csv";
