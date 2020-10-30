@@ -9,6 +9,7 @@
     <?php
   require_once('../wp-load.php');
   $cat=get_categories();
+  $pages=get_pages();
     if (isset($_GET['message'])) {
         ?>
     <div id="message" class="notice notice-success is-dismissible">
@@ -48,12 +49,25 @@
                 <tr class="form-field form-required">
                     <th scope="row">
                         <label for="category">Categoria de las Entradas
-                            <span class="description">(obligatorio)</span></label>
+                            <span class="category">(obligatorio)</span></label>
                     </th>
                     <td>
                         <select name="category" required id="category">
                             <?php foreach ($cat as $value) {
       echo  '<option value="'.$value->cat_ID.'">'.$value->cat_name.'</option>';
+  }?>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="form-field form-required">
+                    <th scope="row">
+                        <label for="page">Pagina Pedre de la Publicacion
+                            <span class="page">(obligatorio)</span></label>
+                    </th>
+                    <td>
+                        <select name="page" required id="page">
+                            <?php foreach ($pages as $value) {
+      echo  '<option value="'.$value->ID.'">'.$value->post_title.'</option>';
   }?>
                         </select>
                     </td>
