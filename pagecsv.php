@@ -1,6 +1,8 @@
 <div class="wrap">
     <?php
     echo '<h1 class="wp-heading-inline">'.get_admin_page_title().'</h1>';
+    $plugindir= plugin_dir_path(__FILE__);
+    $pluginName = explode("/", $plugindir);
     ?>
 
     <br><br><br>
@@ -17,7 +19,7 @@
     }
   ?>
     <form name="uploadCsv" id="uploadCsv" class="validate" enctype="multipart/form-data" method="POST"
-        action="<?php echo site_url().'/wp-content/plugins/add-csv-wordpress-plugin-main/core/loadfile.php'?>">
+        action="<?php echo site_url().'/wp-content/plugins/'.$pluginName[count($pluginName)-2].'/core/loadfile.php'?>">
         <table class="form-table" role="presentation">
             <tbody>
                 <tr class="form-field form-required">
