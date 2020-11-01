@@ -15,7 +15,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
     $content = ' 
     <figure class="wp-block-table php">
     <div style="color: rgb(65, 64, 64);">
-    <h3 class="text-center" style="color: rgb(128, 128, 128);">'.$csvlist[$carName][0][1]." ".validateName($csvlist[$carName][0][5]).'</h3>
+    <h3 class="text-center" style="color: rgb(128, 128, 128);"> PRECIOS '.$csvlist[$carName][0][1]." ".validateName($csvlist[$carName][0][5]).'</h3>
     
      <div class="container">
      <div class="ml-1">
@@ -31,20 +31,24 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         for ($i=0; $i < count($car); $i++) {
             if ($i!=0 && $i!=4 && ($i<11 || $i > 40)) {
                 if ($header[$i] == "Peso" && $car[$i] > 0) {
-                    $data.=$header[$i]." : ".$car[$i]." Kg <br>";
+                    $data.=$header[$i].": ".$car[$i]." Kg <br>";
                 } elseif ($header[$i] == "CapacidadCarga" && $car[$i] > 0) {
-                    $data.=$header[$i]." : ".$car[$i]." Kg <br>";
+                    $data.="Capacidad Carga: ".$car[$i]." Kg <br>";
+                } elseif ($header[$i] == "CapacidadPasajeros" && $car[$i] > 0) {
+                    $data.="Capacidad Pasajeros: ".$car[$i];
+                } elseif ($header[$i] == "AireAcondicionado" && $car[$i] > 0) {
+                    $data.="Aire Acondicionado: ".$car[$i];
                 } elseif ($header[$i] == "Puertas") {
                     $ejesIndex=count($header)-6;
-                    $data.=$header[$i]." : ".$car[$i].", ".$header[$ejesIndex]." : ".$car[$ejesIndex]." <br>";
+                    $data.=$header[$i].": ".$car[$i].", ".$header[$ejesIndex]." : ".$car[$ejesIndex]." <br>";
                 } elseif ($header[$i] >=2000) {
                     if ($car[$i]!=0) {
                         $var =number_format(((int)$car[$i])*1000);
                         $car[$i]="$".str_replace(',', '.', $var);
-                        $data.='Año '.$header[$i]." : ".$car[$i]."<br>";
+                        $data.='Año '.$header[$i].": ".$car[$i]."<br>";
                     }
                 } elseif ($header[$i]!="" && $header[$i]!="Bcpp" && $header[$i]!="Ejes"  && $header[$i]!="Estado" && $header[$i]!="Um" && $header[$i]!="PesoCategoria" && $header[$i]!="Marca" && $header[$i]!="CapacidadCarga" && $header[$i]!="Peso" && $header[$i]!="IdServicio" && $header[$i]!="Importado" && $header[$i]!="Potencia" && $header[$i]!="TipoCaja" && $header[$i]!="Nacionalidad" && $header[$i]!="Cilindraje" && $header[$i]!="Referencia1" && $header[$i]!="Referencia2" && $header[$i]!="Referencia3" && $header[$i]!="Um" && $header[$i]!="PesoCategoria") {
-                    $data.=$header[$i]." : ".$car[$i]."<br>";
+                    $data.=$header[$i].": ".$car[$i]."<br>";
                 }
             }
         }
