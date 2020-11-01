@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Insert csv data like a page
+Plugin Name: Insert Csv Data Like a Page
 Plugin URI:
 Description: Plugin para cargar contenido de csv como un listados de etiquetas
 Version: 1.0
