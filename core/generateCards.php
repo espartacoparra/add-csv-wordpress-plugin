@@ -47,7 +47,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
                     $data.="Capacidad Carga: ".$car[$i]." Kg <br>";
                 } elseif ($header[$i] == "CapacidadPasajeros" && $car[$i] > 0) {
                     $data.="Capacidad Pasajeros: ".$car[$i]."<br>";
-                } elseif ($header[$i] == "AireAcondicionado" && $car[$i] > 0) {
+                } elseif ($header[$i] == "AireAcondicionado") {
                     $data.="Aire Acondicionado: ".$car[$i]."<br>";
                 } elseif ($header[$i] == "Puertas") {
                     $ejesIndex=count($header)-6;
