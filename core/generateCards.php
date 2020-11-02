@@ -16,7 +16,9 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         El precio o valor comercial es útil para calcular el valor asegurable de su Automovil sin incluir el costo de los accesorios (partes no originales del vehículo). El valor asegurado también es útil si quieres hacer un crédito de vehículo, puesto que sobre este valor es que las entidades financieras o bancos te realizarán el préstamo de vehículo.
    
         <strong>El valor comercial del '.$carName.'</strong> es solo una guía, si estás pensando en vender tu vehículo,aunque este precio es aproximado a la realidad, será la oferta, la demanda y el estado de tu vehículo quien determine el precio real de venta.
-    </p>';
+    
+        Estos precios tienen una validez de 30 días desde la fecha de actualización.
+        </p>';
     }
     $content = ' 
     <figure class="wp-block-table php">
@@ -24,9 +26,6 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
     <h3 class="text-center" style="color: rgb(128, 128, 128);"> PRECIOS '.$csvlist[$carName][0][1]." ".validateName($csvlist[$carName][0][5]).'</h3>
     
      <div class="container">
-     <div class="ml-1">
-     [ivory-search id="'.$ivory.'" title="Default Search Form"]
-     </div>
      <div class="mb-4">'.$descriptionResult.' </div>';
     $count=1;
     foreach ($csvlist[$carName] as $car) {
@@ -81,6 +80,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         $description2 = str_replace("#date", $date, $description2);
         $description2 = str_replace("#carName", $carName, $description2);
     }
-    $content .='<div class="mb-4">'.$description2.'<div> </div> </figure>'    ;
+    $content .='<div class="mb-4">'.$description2.'<div>
+    <div class="mb-4">Consultar otra referencia: [ivory-search id="'.$ivory.'" title="Default Search Form"] <div> </div> </figure>'    ;
     return $content;
 }

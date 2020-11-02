@@ -27,4 +27,8 @@ function updatePost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
     $my_post['ID'] = $post->ID;
     $my_post['post_content'] = $content;
     wp_update_post($my_post, true);
+    $ti='Conoce el precio de tu '.$mark . ' ' . $ref1.' nuevo o usado obtén valor com…';
+    update_post_meta($post->ID, '_yoast_wpseo_focuskw', $mark . ' ' . $ref1);
+    update_post_meta($post->ID, '_yoast_wpseo_title', $ti);
+    update_post_meta($post->ID, '_yoast_wpseo_metadesc', 'Tenemos actualizada la Lista de precios para todas las versiones de '.$mark . ' ' . $ref1 .' en todos los años.');
 }

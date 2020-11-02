@@ -29,7 +29,9 @@ function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
                 'post_category'            => array($category)
             )
         );
-        update_post_meta($post_id, '_yoast_wpseo_focuskw', $mark . '-' . $ref1);
-        update_post_meta($post_id, '_yoast_wpseo_metadesc', $mark . '-' . $ref1 . 's simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown print');
+        $ti='Conoce el precio de tu '.$mark . ' ' . $ref1.' nuevo o usado obtén valor com…';
+        update_post_meta($post_id, '_yoast_wpseo_focuskw', $mark . ' ' . $ref1);
+        update_post_meta($post_id, '_yoast_wpseo_title', $ti);
+        update_post_meta($post_id, '_yoast_wpseo_metadesc', 'Tenemos actualizada la Lista de precios para todas las versiones de '.$mark . ' ' . $ref1 .' en todos los años.');
     }
 }
