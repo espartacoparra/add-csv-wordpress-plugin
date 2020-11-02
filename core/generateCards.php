@@ -11,7 +11,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         $descriptionResult = str_replace("#carName", $carName, $resultado);
     } else {
         $descriptionResult='
-    <p>A continuación, encontrarás la<strong>Lista de precios actualizada a '.$date.'</strong> para todas las referencias de Automovil <strong>'.$carName.'</strong>een sus diferentes versiones distribuidos en Colombia, (precios de vehículos en otros países), seleccione el valor comercial correcto.
+    <p>A continuación, encontrarás la <strong>Lista de precios actualizada a '.$date.'</strong> para todas las referencias de Automovil <strong>'.$carName.'</strong>een sus diferentes versiones distribuidos en Colombia, (precios de vehículos en otros países), seleccione el valor comercial correcto.
     
         El precio o valor comercial es útil para calcular el valor asegurable de su Automovil sin incluir el costo de los accesorios (partes no originales del vehículo). El valor asegurado también es útil si quieres hacer un crédito de vehículo, puesto que sobre este valor es que las entidades financieras o bancos te realizarán el préstamo de vehículo.
    
