@@ -11,7 +11,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         $descriptionResult = str_replace("#carName", $carName, $resultado);
     } else {
         $descriptionResult='
-    <p>A continuación, encontrarás la <strong>Lista de precios actualizada a '.$date.'</strong> para todas las referencias de Automovil <strong>'.$carName.'</strong>een sus diferentes versiones distribuidos en Colombia, (precios de vehículos en otros países), seleccione el valor comercial correcto.
+    <p>A continuación, encontrarás la <strong>Lista de precios actualizada a '.$date.'</strong> para todas las referencias de Automovil <strong>'.$carName.'</strong> en sus diferentes versiones distribuidos en Colombia, (precios de vehículos en otros países), seleccione el valor comercial correcto.
     
         El precio o valor comercial es útil para calcular el valor asegurable de su Automovil sin incluir el costo de los accesorios (partes no originales del vehículo). El valor asegurado también es útil si quieres hacer un crédito de vehículo, puesto que sobre este valor es que las entidades financieras o bancos te realizarán el préstamo de vehículo.
    
@@ -24,9 +24,10 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
     <figure class="wp-block-table php">
     <div style="color: rgb(65, 64, 64);">
     <h3 class="text-center" style="color: rgb(128, 128, 128);"> PRECIOS '.$csvlist[$carName][0][1]." ".validateName($csvlist[$carName][0][5]).'</h3>
-    
-     <div class="container">
-     <div class="mb-4">'.$descriptionResult.' </div>';
+    <div class="container ">
+    <div class="container ">
+    <div class="container ">
+     <div class="mb-5 mt-5" style="margin-top: 20px; margin-bottom: 35px;">'.$descriptionResult.' </div>';
     $count=1;
     foreach ($csvlist[$carName] as $car) {
         $data = "";
@@ -81,6 +82,14 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         $description2 = str_replace("#carName", $carName, $description2);
     }
     $content .='<div class="mb-4">'.$description2.'<div>
-    <div class="mb-4">Consultar otra referencia: [ivory-search id="'.$ivory.'" title="Default Search Form"] <div> </div> </figure>'    ;
+    <div class="mb-4">
+    <form  class="form-inline" id="search" method="get" name="searchform" action="http://localhost/credivehiculos/">
+        <div class="form-group">
+            <label for="ivory">Consultar otra referencia: </label> <input name="s" type="text" class="form-control" id="ivory" placeholder="Nombre del vehículo"> <button type="submit" class="btn btn-primary ml-2">Buscar</button>
+            </div>
+        <input type="hidden" name="id" value="'.$ivory.'">
+        <input type="hidden" name="post_type" value="page">
+    </form>
+    <div> </div></div> </div>  </figure>'    ;
     return $content;
 }
