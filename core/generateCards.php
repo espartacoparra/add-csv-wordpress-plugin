@@ -83,7 +83,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
     }
     $content .='<div class="mb-4">'.$description2.'<div>
     <div class="mb-4">
-    <form  class="form-inline" id="search" method="get" name="searchform" action="http://localhost/credivehiculos/">
+    <form  class="form-inline" id="search" method="get" name="searchform" action="'.site_url().'">
         <div class="form-group">
             <label for="ivory">Consultar otra referencia: </label> <input name="s" type="text" class="form-control" id="ivory" placeholder="Nombre del vehículo"> <button type="submit" class="btn btn-primary ml-2">Buscar</button>
             </div>
