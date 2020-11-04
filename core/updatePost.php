@@ -16,11 +16,11 @@ function updatePost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
             $content.= $principal[0];
             $oldTable= explode('</figure>', $principal[1])[0];
             $second= explode($oldTable, $principal[1]);
-            $content.= cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory);
+            $content.= cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory, 'update');
             $content.=$second[1];
             break;
         default:
-            $content =  $post->post_content.cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory);
+            $content =  $post->post_content.cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory, 'update');
             break;
     }
     $my_post = array();

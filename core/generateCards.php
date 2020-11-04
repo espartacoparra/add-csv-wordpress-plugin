@@ -3,7 +3,7 @@ require_once('../../../../wp-load.php');
 if (!current_user_can('manage_options')) {
     exit();
 }
-function cardGenerator($carName, $description, $description2, $csvlist, $header, $ivory)
+function cardGenerator($carName, $description, $description2, $csvlist, $header, $ivory, $type)
 {
     $date=date("j/n/Y");
     if ($description != "") {
@@ -20,10 +20,13 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         Estos precios tienen una validez de 30 días desde la fecha de actualización.
         </p>';
     }
-    $content = ' 
+    $pagetitle='';
+    if ($type=='insert') {
+        $pagetitle='<h3 class="text-center" style="color: rgb(128, 128, 128);"> PRECIOS '.$csvlist[$carName][0][1]." ".validateName($csvlist[$carName][0][5]).'</h3>';
+    }
+    $content = $pagetitle.'
     <figure class="php">
     <div style="color: rgb(65, 64, 64);">
-    <h3 class="text-center" style="color: rgb(128, 128, 128);"> PRECIOS '.$csvlist[$carName][0][1]." ".validateName($csvlist[$carName][0][5]).'</h3>
     <div class="container ">
     <div class="container ">
     <div class="container ">

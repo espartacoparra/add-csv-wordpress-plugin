@@ -14,7 +14,7 @@ function insertPost($mark, $class, $code, $ref1, $wpdb, $description, $descripti
         $author_id = 1;
         $slug = $mark . '-' . $ref1;
         $title = $mark . ' ' . $ref1;
-        $content = cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory);
+        $content = cardGenerator($mark . ' ' . $ref1, $description, $description2, $csv, $csvheader, $ivory, 'insert');
         $post_id = wp_insert_post(
             array(
                 'comment_status'    =>    'closed',
