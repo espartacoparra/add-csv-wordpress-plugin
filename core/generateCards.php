@@ -21,7 +21,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         </p>';
     }
     $content = ' 
-    <figure class="wp-block-table php">
+    <figure class="php">
     <div style="color: rgb(65, 64, 64);">
     <h3 class="text-center" style="color: rgb(128, 128, 128);"> PRECIOS '.$csvlist[$carName][0][1]." ".validateName($csvlist[$carName][0][5]).'</h3>
     <div class="container ">
@@ -35,7 +35,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
             $content.= '<div class="row">';
         }
         for ($i=0; $i < count($car); $i++) {
-            if ($i!=0 && $i!=4 && ($i<11 || $i > 40)) {
+            if ($i!=0 && $i!=4) {
                 if ($header[$i] == "Peso" && $car[$i] > 0) {
                     $data.=$header[$i].": ".$car[$i]." Kg <br>";
                 } elseif ($header[$i] == "CapacidadCarga" && $car[$i] > 0) {
@@ -47,8 +47,8 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
                 } elseif ($header[$i] == "Puertas") {
                     $ejesIndex=count($header)-6;
                     $data.=$header[$i].": ".$car[$i].", ".$header[$ejesIndex]." : ".$car[$ejesIndex]." <br>";
-                } elseif ($header[$i] >=2000) {
-                    if ($car[$i]!=0) {
+                } elseif ($header[$i] >=1970) {
+                    if ($car[$i]>0) {
                         $var =number_format(((int)$car[$i])*1000);
                         $car[$i]="$".str_replace(',', '.', $var);
                         $data.='Año '.$header[$i].": ".$car[$i]."<br>";
@@ -62,7 +62,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
         $content .='<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
             <div class="thumbnail">
             <div class="caption">
-                <h5 >'.$car[1]." ".validateName($car[5])." ".$car[7]." ".$car[$transmisionIndex].'</h5>
+                <h5 >'.$car[1]." ".validateName($car[5])." ".validateName($car[6])." ".$car[7]." ".$car[$transmisionIndex].'</h5>
                 <p >
                 '.$data.'
                 </p>
