@@ -6,14 +6,16 @@ if (!current_user_can('manage_options')) {
 function cardGenerator($carName, $description, $description2, $csvlist, $header, $ivory, $type)
 {
     $date=date("j/n/Y");
+    $carType=strtolower($csvlist[$carName][0][2]);
     if ($description != "") {
         $resultado = str_replace("#date", $date, $description);
         $descriptionResult = str_replace("#carName", $carName, $resultado);
+        $descriptionResult = str_replace("#carType", $carType, $descriptionResult);
     } else {
         $descriptionResult='
-    <p>A continuación, encontrarás la <strong>Lista de precios actualizada a '.$date.'</strong> para todas las referencias de Automovil <strong>'.$carName.'</strong> en sus diferentes versiones distribuidos en Colombia, (precios de vehículos en otros países), seleccione el valor comercial correcto.
+    <p>A continuación, encontrarás la <strong>Lista de precios actualizada a '.$date.'</strong> para todas las referencias de '.$carType.' <strong>'.$carName.'</strong> en sus diferentes versiones distribuidos en Colombia, (precios de vehículos en otros países), seleccione el valor comercial correcto.
     
-        El precio o valor comercial es útil para calcular el valor asegurable de su Automovil sin incluir el costo de los accesorios (partes no originales del vehículo). El valor asegurado también es útil si quieres hacer un crédito de vehículo, puesto que sobre este valor es que las entidades financieras o bancos te realizarán el préstamo de vehículo.
+        El precio o valor comercial es útil para calcular el valor asegurable de su '.$carType.' sin incluir el costo de los accesorios (partes no originales del vehículo). El valor asegurado también es útil si quieres hacer un crédito de vehículo, puesto que sobre este valor es que las entidades financieras o bancos te realizarán el préstamo de vehículo.
    
         <strong>El valor comercial del '.$carName.'</strong> es solo una guía, si estás pensando en vender tu vehículo,aunque este precio es aproximado a la realidad, será la oferta, la demanda y el estado de tu vehículo quien determine el precio real de venta.
     
@@ -52,9 +54,17 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
                     $data.=$header[$i].": ".$car[$i].", ".$header[$ejesIndex]." : ".$car[$ejesIndex]." <br>";
                 } elseif ($header[$i] >=1970) {
                     if ($car[$i]>0) {
-                        $var =number_format(((int)$car[$i])*1000);
-                        $car[$i]="$".str_replace(',', '.', $var);
-                        $data.='Año '.$header[$i].": ".$car[$i]."<br>";
+                        if ($header[$i] >=2000) {
+                            $var =((int)$car[$i])*1000;
+                            $car[$i]="$". number_format($var, 0, ",", ".");
+                            $carUsed= $var-($var*0.2035);
+                            $carUsed="$".number_format($carUsed, 0, ",", ".");
+                            $data.='Año '.$header[$i].": ".$car[$i]." - Retoma: ".$carUsed."<br>";
+                        } else {
+                            $var =number_format(((int)$car[$i])*1000);
+                            $car[$i]="$".str_replace(',', '.', $var);
+                            $data.='Año '.$header[$i].": ".$car[$i]."<br>";
+                        }
                     }
                 } elseif ($header[$i]!="" && $header[$i]!="Bcpp" && $header[$i]!="Ejes"  && $header[$i]!="Estado" && $header[$i]!="Um" && $header[$i]!="PesoCategoria" && $header[$i]!="Marca" && $header[$i]!="CapacidadCarga" && $header[$i]!="Peso" && $header[$i]!="IdServicio" && $header[$i]!="Importado" && $header[$i]!="Potencia" && $header[$i]!="TipoCaja" && $header[$i]!="Nacionalidad" && $header[$i]!="Cilindraje" && $header[$i]!="Referencia1" && $header[$i]!="Referencia2" && $header[$i]!="Referencia3" && $header[$i]!="Um" && $header[$i]!="PesoCategoria") {
                     $data.=$header[$i].": ".$car[$i]."<br>";
