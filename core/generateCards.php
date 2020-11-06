@@ -58,7 +58,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
                             $var =((int)$car[$i])*1000;
                             $car[$i]="$". number_format($var, 0, ",", ".");
                             $carUsed= $var-($var*0.2035);
-                            $carUsed="$".number_format($carUsed, 0, ",", ".");
+                            $carUsed="$".number_format(round($carUsed, -5), 0, ",", ".");
                             $data.='Año '.$header[$i].": ".$car[$i]." - Retoma: ".$carUsed."<br>";
                         } else {
                             $var =number_format(((int)$car[$i])*1000);
