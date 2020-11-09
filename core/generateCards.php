@@ -37,7 +37,7 @@ function cardGenerator($carName, $description, $description2, $csvlist, $header,
     foreach ($csvlist[$carName] as $car) {
         $data = "";
         if ($count == 1) {
-            $content.= '<div class="row">';
+            $content.= '<div class="row content-ads">';
         }
         for ($i=0; $i < count($car); $i++) {
             if ($i!=0 && $i!=4) {
