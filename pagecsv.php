@@ -9,6 +9,7 @@
     <?php
   require_once('../wp-load.php');
   $cat=get_categories();
+  $pages=get_pages();
     if (isset($_GET['message'])) {
         ?>
     <div id="message" class="notice notice-success is-dismissible">
@@ -48,7 +49,7 @@
                 <tr class="form-field form-required">
                     <th scope="row">
                         <label for="category">Categoria de las Entradas
-                            <span class="description">(obligatorio)</span></label>
+                            <span class="category">(obligatorio)</span></label>
                     </th>
                     <td>
                         <select name="category" required id="category">
@@ -59,9 +60,30 @@
                     </td>
                 </tr>
                 <tr class="form-field form-required">
+                    <th scope="row">
+                        <label for="page">Pagina Pedre de la Publicacion
+                            <span class="page">(obligatorio)</span></label>
+                    </th>
+                    <td>
+                        <select name="page" required id="page">
+                            <?php foreach ($pages as $value) {
+      echo  '<option value="'.$value->ID.'">'.$value->post_title.'</option>';
+  }?>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="form-field form-required">
                     <th scope="row"><label for="description">Descripción por defecto </label></th>
                     <td><textarea style="color:black" id="description" disabled cols="30"
-                            rows="3"><?php echo "<p><strong>Lista de precios actualizada #date </strong> para los todos los vehículos <strong> #carName </strong> en sus diferentes versiones, revise detalladamente cual es su versión correcta para que obtenga el valor comercial correcto para su vehículo y compartalo con quien desee desde el botón que se encuentra en la parte inferior.</p>"?></textarea>
+                            rows="15">
+        <?php echo "<p>A continuación, encontrarás la <strong>Lista de precios actualizada a #date</strong> para todas las referencias de #carType <strong>#carName</strong> en sus diferentes versiones distribuidos en Colombia, (precios de vehículos en otros países), seleccione el valor comercial correcto.
+
+        El precio o valor comercial es útil para calcular el valor asegurable de su #carType sin incluir el costo de los accesorios (partes no originales del vehículo). El valor asegurado también es útil si quieres hacer un crédito de vehículo, puesto que sobre este valor es que las entidades financieras o bancos te realizarán el préstamo de vehículo.
+    
+        <strong>El valor comercial del #carName</strong> es solo una guía, si estás pensando en vender tu vehículo, aunque este precio es aproximado a la realidad, será la oferta, la demanda y el estado de tu vehículo quien determine el precio real de venta.
+
+        Estos precios tienen una validez de 30 días desde la fecha de actualización.
+    </p>';"?></textarea>
                     </td>
                 </tr>
                 <tr class="form-field form-required">
